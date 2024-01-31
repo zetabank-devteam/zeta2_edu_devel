@@ -166,6 +166,7 @@ git clone https://github.com/zetabank-devteam/zeta2_edu_devel.git
 cd ~/zeta_ws
 
 colcon build
+source ~/zeta_ws/install/setup.bash
 
 source ~/.bashrc
 

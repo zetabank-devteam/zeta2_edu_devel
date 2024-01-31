@@ -143,6 +143,15 @@ class ControlNode(Node):
         # Vlt = abs(Vl * 1000.0)
         # Vrt = abs(Vr * 1000.0)
         # self.get_logger().info(f"Vl :{Vl}, Vr : {Vr}, Vlt: {int(Vlt)}, Vrt: {int(Vrt)}")
+        
+        if Vl > 1:
+            Vrt = Vrt - (Vl - 1) * 1000
+        if Vl < -1:
+            Vrt = Vrt + (Vl + 1) * 1000
+        if Vr > 1:
+            Vlt = Vlt - (Vr - 1) * 1000
+        if Vr < -1:
+            Vlt = Vlt + (Vr + 1) * 1000
 
         vls = self.int_to_bytes(int(Vlt), 2)  # uint16 to bytes
         vrs = self.int_to_bytes(int(Vrt), 2)
