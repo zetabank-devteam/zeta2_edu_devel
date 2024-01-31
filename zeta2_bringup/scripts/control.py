@@ -135,15 +135,14 @@ class ControlNode(Node):
         # self.get_logger().info(f"D :{D}")
 
         data[1] = D
-        max_vel = 0.40  # 0.26m/second limit velocity
+        max_vel = 0.30  # 0.30m/second limit velocity
 
         Vlt = abs(max(-max_vel * 1000.0, min(max_vel * 1000.0, Vl * 1000.0)))  # abs limit max
         Vrt = abs(max(-max_vel * 1000.0, min(max_vel * 1000.0, Vr * 1000.0)))
 
         # Vlt = abs(Vl * 1000.0)
         # Vrt = abs(Vr * 1000.0)
-        # self.get_logger().info(f"Vl :{Vl}, Vr : {Vr}, Vlt: {int(Vlt)}, Vrt: {int(Vrt)}")
-        
+                
         if Vl > 1:
             Vrt = Vrt - (Vl - 1) * 1000
         if Vl < -1:
@@ -152,6 +151,8 @@ class ControlNode(Node):
             Vlt = Vlt - (Vr - 1) * 1000
         if Vr < -1:
             Vlt = Vlt + (Vr + 1) * 1000
+
+        # self.get_logger().info(f"Vl :{Vl}, Vr : {Vr}, Vlt: {int(Vlt)}, Vrt: {int(Vrt)}")
 
         vls = self.int_to_bytes(int(Vlt), 2)  # uint16 to bytes
         vrs = self.int_to_bytes(int(Vrt), 2)
