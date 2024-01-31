@@ -1,0 +1,7 @@
+<launch>
+
+  <node pkg="zeta2_bringup" exec="odometry.py" name="odometry" output="screen">
+    <remap from="odom" to="/odom"/>
+  </node>
+
+</launch>

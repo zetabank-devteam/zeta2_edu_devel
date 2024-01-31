@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>zeta2_bringup</name>
+
+  <version>0.0.1</version>
+
+  <description>
+    The Zeta Bringup package
+  </description>
+
+  <maintainer email="progryu@zetabank.co.kr">lolddohaja</maintainer>
+  <author email="progryu@zetabank.co.kr">lolddohaja</author>
+  <license>BSD</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+
+  <depend>rclpy</depend>
+  <depend>rclcpp</depend>
+
+  <depend>geometry_msgs</depend>
+  <depend>serial</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>tf2</depend>
+  
+  <exec_depend>robot_localization</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+
+</package>

@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="zeta2_bringup" exec="control.py" name="control" output="screen"/>
+</launch>
