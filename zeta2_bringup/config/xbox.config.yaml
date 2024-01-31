@@ -3,7 +3,7 @@ teleop_twist_joy_node:
     axis_linear:
       x: 1
     scale_linear:
-      x: 0.40  # No movement when turbo is not pressed
+      x: 0.30  # No movement when turbo is not pressed
     # scale_linear_turbo:
     #   x: 1.0  # Full speed when turbo is pressed
 
