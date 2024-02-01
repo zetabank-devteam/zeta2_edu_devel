@@ -1,4 +1,4 @@
-# zeta2 bringup pakage
+# Zeta2 Bringup Pakage
 
 # STEP
 
