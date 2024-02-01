@@ -6,11 +6,14 @@ from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 import launch_ros
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+import os
 
 
 def generate_launch_description():
     zeta2_bringup_pkg = launch_ros.substitutions.FindPackageShare(package='zeta2_bringup').find('zeta2_bringup')
-    state_publisher_laucnh_file_path = os.path.join(zeta2_bringup_pkg, 'launch/zeta2_state_publisher.launch.py')
+    state_publisher_launch_file_path = os.path.join(zeta2_bringup_pkg, 'launch/zeta2_state_publisher.launch.py')
+    lidar_pkg = launch_ros.substitutions.FindPackageShare(package='ldlidar').find('ldlidar')
+    lidar_launch_file_path = os.path.join(lidar_pkg, 'launch/ldlidar.launch.py')
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -75,6 +78,27 @@ def generate_launch_description():
         ),
         # Include the state publisher launch file
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(state_publisher_laucnh_file_path)
+            PythonLaunchDescriptionSource(state_publisher_launch_file_path)
         ),
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(lidar_launch_file_path),
+
+            launch_arguments={
+                'serial_port': LaunchConfiguration('lidar_serial_port'),
+                'lidar_frame': LaunchConfiguration('lidar_frame')
+            }.items()
+        ),
+
+        # ldlidar 관련 파라미터 선언
+        DeclareLaunchArgument(
+            'lidar_serial_port',
+            default_value='/dev/ttyS0',
+            description='Serial port for the LIDAR'
+        ),
+        DeclareLaunchArgument(
+            'lidar_frame',
+            default_value='base_scan',
+            description='Frame ID for the LIDAR'
+        ),
+        
     ])

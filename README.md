@@ -1,3 +1,5 @@
+# zeta2 bringup pakage
+
 # STEP
 
 ## 1. 라즈베리파이에 우분투 22.04 OS 설치
