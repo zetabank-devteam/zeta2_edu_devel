@@ -15,8 +15,6 @@ def generate_launch_description():
     lidar_pkg = launch_ros.substitutions.FindPackageShare(package='ldlidar').find('ldlidar')
     lidar_launch_file_path = os.path.join(lidar_pkg, 'launch/ldlidar.launch.py')
 
-    serial_port = '/dev/ttyS0'
-    lidar_frame = 'base_scan'
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -91,8 +89,8 @@ def generate_launch_description():
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(lidar_launch_file_path),
             launch_arguments={
-                'serial_port': serial_port,
-                'lidar_frame': lidar_frame,
+                'serial_port': '/dev/ttyS0',
+                'lidar_frame': 'base_scan',
             }.items()
         ),
     ])
