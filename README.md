@@ -171,17 +171,14 @@ colcon build
 source /opt/ros/humble/setup.bash
 source ~/zeta_ws/install/setup.bash
 
-source ~/.bashrc
-
 # ros2 launch zeta2_bringup zeta_if.launch.py # interface board -> imu, sonar
 # ros2 launch zeta2_bringup zeta_mc.launch.py # motor board -> motor
 # ros2 launch zeta2_bringup control.launch.py # input motor
 # ros2 launch zeta2_bringup odometry.launch.py # odom
+# ros2 launch zeta2_bringup zeta2_state_publisher.launch.py # making tf
+# ros2 launch ldlidar ldlidar.launch.py serial_port:=/dev/ttyS0 lidar_frame:=base_scan # scan
+
 ros2 launch zeta2_bringup zeta2_bringup.launch.py # if, mc, control, odom
 
 ros2 launch zeta2_bringup zeta_joy.launch.py
-
-ros2 launch zeta2_bringup launch_robot.launch.py # making tf
-
-ros2 launch ldlidar ldlidar.launch.py serial_port:=/dev/ttyS0 lidar_frame:=base_scan # scan
 ```

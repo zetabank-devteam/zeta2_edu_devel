@@ -15,6 +15,9 @@ def generate_launch_description():
     lidar_pkg = launch_ros.substitutions.FindPackageShare(package='ldlidar').find('ldlidar')
     lidar_launch_file_path = os.path.join(lidar_pkg, 'launch/ldlidar.launch.py')
 
+    serial_port = '/dev/ttyS0'
+    lidar_frame = 'base_scan'
+
     return LaunchDescription([
         DeclareLaunchArgument(
             'use_zeta_if',
@@ -36,11 +39,13 @@ def generate_launch_description():
             default_value='true',
             description='Launch the odometry.py script'
         ),
+
         Node(
             package='zeta2_bringup',
             executable='zeta_if_node',
             name='zeta_if',
             output='screen',
+            respawn=True,
             condition=IfCondition(LaunchConfiguration('use_zeta_if')),
             parameters=[
                 {'port_name': '/dev/ttyUSB0'},
@@ -52,6 +57,7 @@ def generate_launch_description():
             executable='zeta_mc_node',
             name='zeta_mc',
             output='screen',
+            respawn=True,
             condition=IfCondition(LaunchConfiguration('use_zeta_mc')),
             parameters=[
                 {'port_name': '/dev/ttyUSB1'},
@@ -63,6 +69,7 @@ def generate_launch_description():
             executable='control.py',
             name='control',
             output='screen',
+            respawn=True,
             condition=IfCondition(LaunchConfiguration('use_control'))
         ),
         Node(
@@ -74,6 +81,7 @@ def generate_launch_description():
                         # ('tf', 'zeta/tf')
                         ],
             output='screen',
+            respawn=True,
             condition=IfCondition(LaunchConfiguration('use_odometry'))
         ),
         # Include the state publisher launch file
@@ -82,23 +90,9 @@ def generate_launch_description():
         ),
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(lidar_launch_file_path),
-
             launch_arguments={
-                'serial_port': LaunchConfiguration('lidar_serial_port'),
-                'lidar_frame': LaunchConfiguration('lidar_frame')
+                'serial_port': serial_port,
+                'lidar_frame': lidar_frame,
             }.items()
         ),
-
-        # ldlidar 관련 파라미터 선언
-        DeclareLaunchArgument(
-            'lidar_serial_port',
-            default_value='/dev/ttyS0',
-            description='Serial port for the LIDAR'
-        ),
-        DeclareLaunchArgument(
-            'lidar_frame',
-            default_value='base_scan',
-            description='Frame ID for the LIDAR'
-        ),
-        
     ])
