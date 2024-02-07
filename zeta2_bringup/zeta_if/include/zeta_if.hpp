@@ -32,8 +32,8 @@ typedef unsigned int 		DWORD;
 #define SEND_HWFW_VER		0x30
 #define SEND_LINEDETECT		0x40
 
-#define HW_VERSION			"MCB1.1"
-#define FW_VERSION			"IF1.0."
+#define HW_VERSION 			"IFB1.1"
+#define FW_VERSION 			"1.1.0."
 #define SW_VERSION			"IS2.0."
 
 

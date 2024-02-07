@@ -396,7 +396,7 @@ BYTE Zeta_IF::RecvDatatoBuff(BYTE buff[], int num)
 						//memcpy(mc_serialout_msgs.data, recvBuffer[j+4], sizeof(uint8_t)*5);
 						
 						for(int j=0; j<6; j++)
-							hw_version_msgs.data[j] = recvBuffer[j + 6];
+							hw_version_msgs.data[j] = recvBuffer[j + 5];
 
 						for(int j=0; j<6; j++)
 							fw_version_msgs.data[j] = recvBuffer[j + 12];
