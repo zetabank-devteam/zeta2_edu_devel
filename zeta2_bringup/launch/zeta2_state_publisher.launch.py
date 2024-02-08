@@ -12,11 +12,4 @@ def generate_launch_description():
             arguments=['0', '0', '0.135', '0', '0', '0', '1', 'base_link', 'base_scan'],
             remappings=[('/tf', 'tf')]
         ),
-        launch_ros.actions.Node(
-            package='tf2_ros',
-            executable='static_transform_publisher',
-            name='base2imu',
-            arguments=['0', '0', '0.01', '0', '0', '0', '1', 'base_link', 'imu_link'],
-            remappings=[('/tf', 'tf')]
-        )
     ])
