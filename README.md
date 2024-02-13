@@ -158,7 +158,9 @@ sudo apt install ros-humble-xacro -y
 ```
 
 ```bash
-source /opt/ros/humble/setup.bash
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
 mkdir -p ~/zeta_ws/src
 cd ~/zeta_ws/src
 git clone https://github.com/zetabank-devteam/zeta2_edu_devel.git
@@ -168,8 +170,9 @@ git clone https://github.com/zetabank-devteam/zeta2_edu_devel.git
 cd ~/zeta_ws
 
 colcon build
-source /opt/ros/humble/setup.bash
-source ~/zeta_ws/install/setup.bash
+echo "source ~/zeta_ws/install/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
 
 # ros2 launch zeta2_bringup zeta_if.launch.py # interface board -> imu, sonar
 # ros2 launch zeta2_bringup zeta_mc.launch.py # motor board -> motor

@@ -14,7 +14,7 @@ def generate_launch_description():
     state_publisher_launch_file_path = os.path.join(zeta2_bringup_pkg, 'launch/zeta2_state_publisher.launch.py')
     lidar_pkg = launch_ros.substitutions.FindPackageShare(package='ldlidar').find('ldlidar')
     lidar_launch_file_path = os.path.join(lidar_pkg, 'launch/ldlidar.launch.py')
-
+    zeta_joy_launch_file_path = os.path.join(zeta2_bringup_pkg, 'launch/zeta_joy.launch.py')
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -92,5 +92,8 @@ def generate_launch_description():
                 'serial_port': '/dev/ttyS0',
                 'lidar_frame': 'base_scan',
             }.items()
+        ),        
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(zeta_joy_launch_file_path)
         ),
     ])
