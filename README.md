@@ -163,7 +163,7 @@ source ~/.bashrc
 
 mkdir -p ~/zeta_ws/src
 cd ~/zeta_ws/src
-git clone https://github.com/zetabank-devteam/zeta2_edu_devel.git
+git clone -b iron https://github.com/zetabank-devteam/zeta2_edu_devel.git
 ```
 
 ```bash
