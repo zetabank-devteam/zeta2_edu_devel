@@ -116,9 +116,9 @@ sudo apt install openssh-server
 
 ## history
 
-- https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
+- https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html
 ```bash
-sudo apt install ros-humble-desktop
+sudo apt install ros-iron-desktop
 ```
 
 ## ld06lidar setting
@@ -146,19 +146,19 @@ reboot
 
 ```bash
 # bringup
-sudo apt install ros-humble-tf-transformations -y
+sudo apt install ros-iron-tf-transformations -y
 sudo apt install python3-pip -y
 sudo pip3 install transforms3d 
-sudo apt install ros-humble-robot-localization -y
+sudo apt install ros-iron-robot-localization -y
 
 
 # description
-sudo apt install ros-humble-joint-state-publisher-gui -y
-sudo apt install ros-humble-xacro -y
+sudo apt install ros-iron-joint-state-publisher-gui -y
+sudo apt install ros-iron-xacro -y
 ```
 
 ```bash
-echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+echo "source /opt/ros/iron/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 
 mkdir -p ~/zeta_ws/src
